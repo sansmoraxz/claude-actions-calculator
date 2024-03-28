@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "claude_actions_demo"
+version = "0.1.0"
+description = "Simple application demonstrating claude using a calculator"
+authors = ["sansmoraxz <31374920+sansmoraxz@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "~3.11"
+boto3 = "^1.34.64"
+pydantic = "^2.6.4"
+termcolor = "^2.4.0"
+
+[tool.poetry.group.dev.dependencies]
+jupyter = "^1.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
