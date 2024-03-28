@@ -1,6 +1,7 @@
-from actions import ToolRequest
-from models import ClaudeMessage, ClaudeRole, ContentBlock
-from utils import start_loop
+from claude_actions_demo.actions import ToolRequest
+from claude_actions_demo.models import ClaudeMessage, ClaudeRole, ContentBlock
+from claude_actions_demo.utils import start_loop
+import pathlib
 
 # TOOL definations
 
@@ -60,14 +61,19 @@ def get_tools() -> list[ToolRequest]:
         
     ]
 
-sys_prompt = open("sys_prompt.md", "r").read()
+
+f = pathlib.Path(__file__).parent / "sys_prompt.md"
+sys_prompt = open(f, "r").read()
 sys_prompt = sys_prompt.format(tools="\n".join([tool.get_tool_prompt() for tool in get_tools()]))
 
 messages = [
-        ClaudeMessage(role=ClaudeRole.SYSTEM, content=[ContentBlock(type='text', text=sys_prompt)]),
-        ClaudeMessage(role=ClaudeRole.USER, content=[ContentBlock(type='text', text="Solve: 5 * 3 ^ 2 + 2 ^ 3 - 1")])
-    ]
+    ClaudeMessage(role=ClaudeRole.SYSTEM, content=[ContentBlock(type='text', text=sys_prompt)]),
+    ClaudeMessage(role=ClaudeRole.USER, content=[ContentBlock(type='text', text="Solve: 5 * 3 ^ 2 + 2 ^ 3 - 1")])
+]
 
-x, msgs = start_loop(messages, get_tools())
+def main():
+    x, msgs = start_loop(messages, get_tools())
+    print(f'\n\n{x}\n\n')
 
-print(f'\n\n{x}\n\n')
+if __name__ == "__main__":
+    main()

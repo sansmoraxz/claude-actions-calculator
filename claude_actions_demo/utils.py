@@ -1,6 +1,6 @@
 from typing import Literal
-from models import AnthropicInput, AnthropicResponse, ClaudeMessage, ClaudeRole, ContentBlock
-from actions import ToolRequest, invoke_action
+from claude_actions_demo.models import AnthropicInput, AnthropicResponse, ClaudeMessage, ClaudeRole, ContentBlock
+from claude_actions_demo.actions import ToolRequest, invoke_action
 import boto3
 
 from termcolor import colored
