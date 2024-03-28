@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "claude_actions_demo"
+name = "claude-actions-demo"
 version = "0.1.0"
 description = "Simple application demonstrating claude using a calculator"
 authors = ["sansmoraxz <31374920+sansmoraxz@users.noreply.github.com>"]
@@ -13,6 +13,9 @@ termcolor = "^2.4.0"
 
 [tool.poetry.group.dev.dependencies]
 jupyter = "^1.0.0"
+
+[tool.poetry.scripts]
+calulator = "claude_actions_demo.main:main"
 
 [build-system]
 requires = ["poetry-core"]
