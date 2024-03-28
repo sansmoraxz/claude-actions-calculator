@@ -62,18 +62,21 @@ def get_tools() -> list[ToolRequest]:
     ]
 
 
-f = pathlib.Path(__file__).parent / "sys_prompt.md"
-sys_prompt = open(f, "r").read()
-sys_prompt = sys_prompt.format(tools="\n".join([tool.get_tool_prompt() for tool in get_tools()]))
+def main(problem: str = "Solve: 5 * 3 ^ 2 + 2 ^ 3 - 1"):
+    f = pathlib.Path(__file__).parent / "sys_prompt.md"
+    sys_prompt = open(f, "r").read()
+    sys_prompt = sys_prompt.format(tools="\n".join([tool.get_tool_prompt() for tool in get_tools()]))
+    messages = [
+        ClaudeMessage(role=ClaudeRole.SYSTEM, content=[ContentBlock(type='text', text=sys_prompt)]),
+        ClaudeMessage(role=ClaudeRole.USER, content=[ContentBlock(type='text', text=problem)])
+    ]
 
-messages = [
-    ClaudeMessage(role=ClaudeRole.SYSTEM, content=[ContentBlock(type='text', text=sys_prompt)]),
-    ClaudeMessage(role=ClaudeRole.USER, content=[ContentBlock(type='text', text="Solve: 5 * 3 ^ 2 + 2 ^ 3 - 1")])
-]
-
-def main():
     x, msgs = start_loop(messages, get_tools())
     print(f'\n\n{x}\n\n')
 
 if __name__ == "__main__":
-    main()
+    import argparse
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--problem", type=str)
+    args = parser.parse_args()
+    main(args.problem)
