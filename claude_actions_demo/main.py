@@ -6,23 +6,23 @@ import pathlib
 # TOOL definations
 
 def multiply(a: str, b: str) -> str:
-    return str(int(a) * int(b))
+    return str(float(a) * float(b))
 
 def add(a: str, b: str) -> str:
-    return str(int(a) + int(b))
+    return str(float(a) + float(b))
 
 def subtract(a: str, b: str) -> str:
-    return str(int(a) - int(b))
+    return str(float(a) - float(b))
 
 def divide(a: str, b: str) -> str:
-    return str(int(a) // int(b))
+    return str(float(a) // float(b))
 
 def power(a: str, b: str) -> str:
-    return str(int(a) ** int(b))
+    return str(float(a) ** float(b))
 
 def log(a: str, b: str) -> str:
     import math
-    return str(math.log(int(a), int(b)))
+    return str(math.log(float(a), float(b)))
 
 
 
