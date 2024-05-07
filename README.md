@@ -1,5 +1,15 @@
 # Claude Action Calculator
 
-Simple application demonstrating claude using a calculator.
+Simple cli application to solve complex mathematical problems using AI.
 
+### Key features:
+- Uses Claude Messages API with custom System prompt
+- LLM agents to produce answer using ReAct pattern
+- Prefilled input tokens for guided generation
+- Early stopping for generation
+- Provided tools to exit answer with conclusion
+- Timeouts
+
+
+### Demo:
 [![asciicast](assets/demo.gif)](https://asciinema.org/a/EnTQlWJ1U9mkS1I1YbdSH9og1)
