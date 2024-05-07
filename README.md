@@ -8,7 +8,7 @@ Simple cli application to solve complex mathematical problems using AI.
 - Prefilled input tokens for guided generation
 - Early stopping for generation
 - Provided tools to exit answer with conclusion
-- Timeouts
+- Graceful handling of infinite loop case
 
 
 ### Demo:
